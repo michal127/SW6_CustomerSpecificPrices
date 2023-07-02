@@ -1,0 +1,11 @@
+{% block sw_customer_detail_content_tab_order %}
+    {% parent %}
+    <sw-tabs-item
+            v-if="acl.can('md_product_customer_price.viewer')"
+            class="sw-customer-detail__tab-customer-prices"
+            :route="{ name: 'sw.customer.detail.product_customer_prices_list', params: { id: $route.params.id } }"
+            :title="$tc('CustomerSpecificPrices.sw-customer.detail.tabCustomerPrices')"
+    >
+        {{ $tc('CustomerSpecificPrices.sw-customer.detail.tabCustomerPrices') }}
+    </sw-tabs-item>
+{% endblock %}

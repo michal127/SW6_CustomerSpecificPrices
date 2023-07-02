@@ -1,0 +1,42 @@
+{% block sw_customer_detail_customer_prices_list %}
+    <div class="customer-prices">
+        <div v-if="isLoading">
+            <sw-skeleton/>
+        </div>
+
+        <template v-else-if="productCustomerPrices.length">
+            <sw-container
+                    rows="auto"
+                    columns="100%"
+                    class="sw-product-detail-context-prices"
+            >
+                <sw-entity-listing
+                        :items="productCustomerPrices"
+                        :repository="productCustomerPriceRepository"
+                        :showSelection="false"
+                        :columns="columns"
+                        :fullPage="false"
+                        :detailRoute="detailRoute"
+                        :allow-edit="acl.can('md_product_customer_price.editor')"
+                        :allow-delete="acl.can('md_product_customer_price.deleter')"
+                        :allow-inline-edit="false"
+                        :allow-bulk-edit="false"
+                >
+
+                    <template #column-product="{ item: {product} }">
+                        <router-link
+                                v-if="acl.can('product.viewer')"
+                                :to="{ name: 'sw.product.detail.product_customer_prices_list', params: { id: product.id }, query: { edit: false } }"
+                        >
+                            {{ product.name }} ({{ product.productNumber }})
+                        </router-link>
+                        <template v-else>{{ product.name }} ({{ product.productNumber }})</template>
+                    </template>
+                </sw-entity-listing>
+            </sw-container>
+        </template>
+        <sw-empty-state v-else
+                        :title="$tc('CustomerSpecificPrices.sw-customer.detail.list.noCustomerPrices')"
+        />
+    </div>
+{% endblock %}

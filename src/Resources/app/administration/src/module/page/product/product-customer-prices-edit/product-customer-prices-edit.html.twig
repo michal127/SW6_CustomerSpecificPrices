@@ -1,0 +1,66 @@
+{% block sw_product_detail_customer_prices_edit %}
+    <sw-page class="customer_prices_create">
+        {% block sw_product_detail_customer_prices_edit_header %}
+            <template slot="smart-bar-header">
+                <h2>{{ $tc('CustomerSpecificPrices.sw-product.detail.edit.header') + productName }}</h2>
+            </template>
+        {% endblock %}
+        <template #smart-bar-actions>
+            <sw-button
+                    variant="primary"
+                    @click="onSave"
+                    :is-loading="isLoading || isSaving"
+            >
+                {{ $tc('global.default.save') }}
+            </sw-button>
+        </template>
+
+        <template #content>
+            <sw-card-view>
+                <sw-card
+                        position-identifier="sw_product_detail_customer_prices_edit"
+                        :is-loading="isLoading">
+                    <sw-container
+                            v-if="customerPrice"
+                            columns="minmax(min-content, 1fr) minmax(min-content, 1fr)"
+                            gap="0 32px"
+                    >
+                        <div>
+                            <sw-number-field
+                                    :label="$tc('CustomerSpecificPrices.sw-product.detail.edit.net')"
+                                    :min="0.01"
+                                    :error="customerPriceNetError"
+                                    v-model="customerPrice.net"/>
+                            <sw-number-field
+                                    :label="$tc('CustomerSpecificPrices.sw-product.detail.edit.gross')"
+                                    :min="0.01"
+                                    :error="customerPriceGrossError"
+                                    v-model="customerPrice.gross"/>
+                            <sw-entity-single-select
+                                    v-model="customerPrice.customerId"
+                                    entity="customer"
+                                    :label="$tc('CustomerSpecificPrices.sw-product.detail.edit.customer')"
+                                    :label-callback="customerLabelCallback"
+                                    size="medium"
+                            />
+                            <sw-field-error v-if="customerPriceCustomerIdError" :error="customerPriceCustomerIdError"/>
+
+                        </div>
+                        <div>
+                            <sw-number-field
+                                    :label="$tc('CustomerSpecificPrices.sw-product.detail.edit.listNet')"
+                                    :min="0"
+                                    :error="customerPriceListNetError"
+                                    v-model="customerPrice.listNet"/>
+                            <sw-number-field
+                                    :label="$tc('CustomerSpecificPrices.sw-product.detail.edit.listGross')"
+                                    :min="0"
+                                    :error="customerPriceListGrossError"
+                                    v-model="customerPrice.listGross"/>
+                        </div>
+                    </sw-container>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults autowire="true" autoconfigure="true"/>
+        <prototype namespace="MD\CustomerSpecificPrices\" resource="../../"/>
+
+        <!--  Entity definitions  -->
+        <service id="MD\CustomerSpecificPrices\Core\Content\Product\ProductCustomerPriceDefinition">
+            <tag name="shopware.entity.definition"/>
+        </service>
+
+        <!--  Decorators  -->
+        <service id="MD\CustomerSpecificPrices\Decorator\CustomerPriceCalculator"
+                 decorates="Shopware\Core\Content\Product\SalesChannel\Price\ProductPriceCalculator"
+                 decoration-priority="1"
+        >
+            <argument type="service" id="MD\CustomerSpecificPrices\Decorator\CustomerPriceCalculator.inner" />
+        </service>
+
+    </services>
+</container>

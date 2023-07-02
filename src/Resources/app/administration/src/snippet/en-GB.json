@@ -1,0 +1,54 @@
+{
+  "CustomerSpecificPrices": {
+    "general": {
+      "mainMenuItemGeneral": "Customer specific prices"
+    },
+    "sw-product": {
+      "detail": {
+        "tabCustomerPrices": "Customer prices",
+        "list": {
+          "columns": {
+            "customer": "Customer",
+            "net": "Netto",
+            "gross": "Gross",
+            "listNet": "List netto",
+            "listGross": "List gross"
+          },
+          "addNew": "Add new customer price",
+          "noCustomerPrices": "There are no customer specific prices for this product."
+        },
+        "edit": {
+          "header": "Edit customer specific price for product: ",
+          "customer": "Customer",
+          "net": "Netto",
+          "gross": "Gross",
+          "listNet": "List netto",
+          "listGross": "List gross",
+          "saveSuccess": "Customer price saved successfully!",
+          "saveError": "Customer price could not be saved!"
+        },
+        "create": {
+          "header": "Create customer specific price for product: ",
+          "saveSuccess": "Customer price created successfully!",
+          "saveError": "Customer price could not be created!"
+        }
+      }
+    },
+    "sw-customer": {
+      "detail": {
+        "tabCustomerPrices": "Customer prices",
+        "list": {
+          "columns": {
+            "product": "Product",
+            "net": "Netto",
+            "gross": "Gross",
+            "listNet": "List netto",
+            "listGross": "List gross"
+          },
+          "noCustomerPrices": "There are no customer specific prices for this customer."
+        }
+      }
+    }
+  }
+}
+

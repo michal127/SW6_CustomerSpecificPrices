@@ -1,0 +1,55 @@
+{% block sw_product_detail_customer_prices_list %}
+    <div class="customer-prices">
+        <div v-if="isLoading">
+            <sw-skeleton/>
+        </div>
+
+        <template v-else-if="productCustomerPrices.length">
+            <sw-button
+                    variant="primary"
+                    size="small"
+                    @click="onAddNew">{{ $tc('CustomerSpecificPrices.sw-product.detail.list.addNew') }}
+            </sw-button>
+            <sw-container
+                    rows="auto"
+                    columns="100%"
+                    class="sw-product-detail-context-prices"
+            >
+                <sw-entity-listing
+                        :items="productCustomerPrices"
+                        :repository="productCustomerPriceRepository"
+                        :showSelection="false"
+                        :columns="columns"
+                        :fullPage="false"
+                        :detailRoute="detailRoute"
+                        :allow-edit="acl.can('md_product_customer_price.editor')"
+                        :allow-delete="acl.can('md_product_customer_price.deleter')"
+                        :allow-inline-edit="false"
+                        :allow-bulk-edit="false"
+                >
+
+                    <template #column-customer="{ item: {customer} }">
+                        <router-link
+                                v-if="acl.can('customer.viewer')"
+                                :to="{ name: 'sw.customer.detail', params: { id: customer.id }, query: { edit: false } }"
+                        >
+                            {{ customer.lastName }}, {{ customer.firstName }}
+                        </router-link>
+                        <template v-else>{{ customer.lastName }}, {{ customer.firstName }}</template>
+                    </template>
+                </sw-entity-listing>
+            </sw-container>
+        </template>
+        <sw-empty-state v-else
+                        :title="$tc('CustomerSpecificPrices.sw-product.detail.list.noCustomerPrices')"
+        >
+            <template #actions>
+                <sw-button
+                        variant="primary"
+                        size="small"
+                        @click="onAddNew">{{ $tc('CustomerSpecificPrices.sw-product.detail.list.addNew') }}
+                </sw-button>
+            </template>
+        </sw-empty-state>
+    </div>
+{% endblock %}

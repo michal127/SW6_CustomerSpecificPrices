@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Price settings</title>
+
+        <input-field type="int">
+            <name>minimumProductPriceDecrease</name>
+            <defaultValue>100</defaultValue>
+            <label>Minimum product price</label>
+            <helpText>Minimum product price value for customer price decrease mechanism</helpText>
+        </input-field>
+    </card>
+</config>

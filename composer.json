@@ -1,0 +1,40 @@
+{
+  "name": "md/customer-specific-prices",
+  "description": "Custom prices per customer",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Michał Daniel"
+    }
+  ],
+  "require": {
+    "shopware/core": "~6.5"
+  },
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "MD\\CustomerSpecificPrices\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "MD\\CustomerSpecificPrices\\CustomerSpecificPrices",
+    "copyright": "Michał Daniel",
+    "label": {
+      "de-DE": "Customer specific prices",
+      "en-GB": "Customer specific prices"
+    },
+    "description": {
+      "de-DE": "Custom prices per customer",
+      "en-GB": "Custom prices per customer"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://github.com/michal127",
+      "en-GB": "https://github.com/michal127"
+    },
+    "supportLink": {
+      "de-DE": "https://github.com/michal127",
+      "en-GB": "https://github.com/michal127"
+    }
+  }
+}
